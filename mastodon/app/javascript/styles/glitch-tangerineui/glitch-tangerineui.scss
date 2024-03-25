@@ -1,0 +1,83 @@
+.app-body .status__info__icons {
+    display: flex;
+}
+
+.app-body .status__info__icons > * {
+    opacity: 0.8;
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    line-height: 15px;
+}
+
+.app-body .status__info__icons .text-icon {
+    padding: 0 2px;
+}
+
+
+.status__visibility-icon {
+    padding: inherit;
+}
+
+.navigation-panel {
+    display: block;
+}
+
+.navigation-panel .icon-cogs {
+    color: var(--color-accent)
+}
+
+.status.collapsed {
+    min-height: auto;
+}
+
+.status__collapse-button {
+    width: 24px;
+}
+.status__collapse-button.deactivate > svg {
+    transform: rotate(180deg);
+    transition: all .2s;
+}
+
+.app-body .notification__message .status__collapse-button > svg {
+    margin-left: 0;
+}
+
+.pillbar-button {
+    background-color: transparent;
+    color: var(--color-fg);
+    border-radius: 9px;
+    transition: all 0.2s;
+    max-height: 45px;
+    padding: 4px 8px;
+    margin-right: 4px;
+    border: 0;
+}
+
+.pillbar-button:hover,
+.pillbar-button.active {
+    background-color: var(--color-accent-bg);
+}
+
+.status__content .status__content__text,
+.edit-indicator__content .status__content__text,
+.reply-indicator__content .status__content__text {
+    display: block;
+}
+.status__wrapper.focusable.status__wrapper-public.collapsed .status__content{
+    display: none;
+}
+
+.app-body .compose-form__buttons .icon-button.inverted {
+    color: var(--color-accent)
+}
+
+.compose-form__submit {
+    margin-left: auto;
+}
+
+.column-subheading {
+    border-right: 1px solid var(--color-lines);
+    border-left: 1px solid var(--color-lines);
+}
