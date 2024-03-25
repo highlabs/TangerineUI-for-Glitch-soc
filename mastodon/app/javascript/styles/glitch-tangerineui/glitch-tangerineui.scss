@@ -35,7 +35,13 @@
 .status__collapse-button {
     width: 24px;
 }
-.status__collapse-button.deactivate > svg {
+
+.status__collapse-button > svg {
+    transform: rotate(180deg);
+    transition: all .2s;
+}
+
+.status__collapse-button.activate > svg {
     transform: rotate(180deg);
     transition: all .2s;
 }
@@ -60,15 +66,6 @@
     background-color: var(--color-accent-bg);
 }
 
-.status__content .status__content__text,
-.edit-indicator__content .status__content__text,
-.reply-indicator__content .status__content__text {
-    display: block;
-}
-.status__wrapper.focusable.status__wrapper-public.collapsed .status__content{
-    display: none;
-}
-
 .app-body .compose-form__buttons .icon-button.inverted {
     color: var(--color-accent)
 }
@@ -80,4 +77,24 @@
 .column-subheading {
     border-right: 1px solid var(--color-lines);
     border-left: 1px solid var(--color-lines);
+}
+
+.detailed-status__meta__line svg {
+    padding: 0;
+}
+
+// Incollapse toots
+.status.status-public .status__content__text {
+    display: block;
+}
+.status.status-public.collapsed .status__content__text {
+    display: none;
+}
+
+// Fix CW
+.app-body .status__content:not(:has(> .status__content__text--visible)) > p:first-child:has(.status__content__spoiler-link) + div {
+    display: block;
+}
+.status__content__spoiler {
+    display: none;
 }
