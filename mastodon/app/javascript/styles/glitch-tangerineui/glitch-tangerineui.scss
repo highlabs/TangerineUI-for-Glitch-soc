@@ -1,18 +1,28 @@
-.app-body .status__info__icons {
-    display: flex;
-}
-
-.app-body .status__info__icons > * {
-    opacity: 0.8;
-    font-size: 15px;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    line-height: 15px;
-}
-
-.app-body .status__info__icons .text-icon {
-    padding: 0 2px;
+.app-body {
+    .status__info__icons {
+        display: flex;
+    }
+    .status__info__icons > * {
+        opacity: 0.8;
+        font-size: 15px;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        line-height: 15px;
+    }
+    .status__info__icons .text-icon {
+        padding: 0 2px;
+    }
+    .notification__message .status__collapse-button > svg {
+        margin-left: 0;
+    }
+    .compose-form__buttons .icon-button.inverted {
+        color: var(--color-accent)
+    }
+    // Fix CW
+    .status__content:not(:has(> .status__content__text--visible)) > p:first-child:has(.status__content__spoiler-link) + div {
+        display: block;
+    }
 }
 
 
@@ -22,10 +32,9 @@
 
 .navigation-panel {
     display: block;
-}
-
-.navigation-panel .icon-cogs {
-    color: var(--color-accent)
+    .icon-cogs {
+        color: var(--color-accent)
+    }
 }
 
 .status.collapsed {
@@ -34,20 +43,14 @@
 
 .status__collapse-button {
     width: 24px;
-}
-
-.status__collapse-button > svg {
-    transform: rotate(180deg);
-    transition: all .2s;
-}
-
-.status__collapse-button.activate > svg {
-    transform: rotate(180deg);
-    transition: all .2s;
-}
-
-.app-body .notification__message .status__collapse-button > svg {
-    margin-left: 0;
+    > svg {
+        transform: rotate(0deg);
+        transition: all .2s;
+    }
+    &.activate > svg {
+        transform: rotate(180deg);
+        transition: all .2s;
+    }
 }
 
 .pillbar-button {
@@ -59,15 +62,10 @@
     padding: 4px 8px;
     margin-right: 4px;
     border: 0;
-}
-
-.pillbar-button:hover,
-.pillbar-button.active {
-    background-color: var(--color-accent-bg);
-}
-
-.app-body .compose-form__buttons .icon-button.inverted {
-    color: var(--color-accent)
+    &:hover,
+    &.active {
+        background-color: var(--color-accent-bg);
+    }
 }
 
 .compose-form__submit {
@@ -83,18 +81,47 @@
     padding: 0;
 }
 
-// Incollapse toots
-.status.status-public .status__content__text {
-    display: block;
+// "Uncollapse" toots
+.status,
+.detailed-status {
+    .status__content {
+        .status__content__text {
+            display: block;
+        }
+    }
+    &.collapsed .status__content {
+        height: 20px;
+        overflow: hidden;
+        padding-top: 0;
+        text-overflow: ellipsis;
+        position: relative;
+        &::after {
+            background: linear-gradient(transparent,var(--color-post-bg));
+            bottom: 0;
+            content: "";
+            left: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
 }
-.status.status-public.collapsed .status__content__text {
+
+.status__content__spoiler {
     display: none;
 }
 
-// Fix CW
-.app-body .status__content:not(:has(> .status__content__text--visible)) > p:first-child:has(.status__content__spoiler-link) + div {
-    display: block;
+.doodle-modal__action-bar {
+    padding: 4px;
+    background-color: var(--color-accent-bg);
 }
-.status__content__spoiler {
-    display: none;
+.account__action-bar {
+    @extend .account__header__bar;
+    .account__action-bar-links {
+        @extend .account__header__extra__links;
+        strong {
+            margin-left: 4px;
+        }
+    }
 }
